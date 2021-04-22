@@ -42,6 +42,14 @@ class PlayerListCollectionViewController: UICollectionViewController {
         updateViews()
     }
     
+//    func randomPlayerSelector() {
+//        guard let randomPointGuard = PlayerController.pointGuard.randomElement(),
+//              let randomShootingGuard = PlayerController.shootingGuard.randomElement(),
+//              let randomPowerForward = PlayerController.powerForward.randomElement(),
+//              let randomSmallForward = PlayerController.smallForward.randomElement(),
+//              let randomCenter = PlayerController.center.randomElement() else { return }
+//    }
+    
     func updateViews() {
         guard let targetPlayer = targetPlayer else { return }
         self.title = "Who is a \(selectedPosition)?"
