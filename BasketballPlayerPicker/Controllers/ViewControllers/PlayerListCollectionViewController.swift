@@ -12,7 +12,7 @@ class PlayerListCollectionViewController: UICollectionViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        shufflePlayers(position: selectedPosition)
+        shufflePlayers(selectedPosition: selectedPosition)
     }
     
     //MARK: - Properties
@@ -21,46 +21,41 @@ class PlayerListCollectionViewController: UICollectionViewController {
     var selectedPosition = "Point Guard"
     
     //MARK: - Functions
-    func shufflePlayers(position: String) {
-        if position == "Point Guard" {
-            guard let randomPointGuard = PlayerController.pointGuard.randomElement(),
-                  let randomShootingGuard = PlayerController.shootingGuard.randomElement(),
-                  let randomPowerForward = PlayerController.powerForward.randomElement(),
-                  let randomSmallForward = PlayerController.smallForward.randomElement(),
-                  let randomCenter = PlayerController.center.randomElement() else { return }
-            playersOnScreen += [randomPointGuard, randomShootingGuard, randomPowerForward, randomSmallForward, randomCenter]
+    func shufflePlayers(selectedPosition: String) {
+        guard let randomPointGuard = PlayerController.pointGuard.randomElement(),
+              let randomShootingGuard = PlayerController.shootingGuard.randomElement(),
+              let randomPowerForward = PlayerController.powerForward.randomElement(),
+              let randomSmallForward = PlayerController.smallForward.randomElement(),
+              let randomCenter = PlayerController.center.randomElement() else { return }
+        playersOnScreen = [randomPointGuard, randomShootingGuard, randomPowerForward, randomSmallForward, randomCenter]
+        if selectedPosition == "Point Guard" {
             targetPlayer = randomPointGuard
-        } else if position == "Shooting Guard" {
-            
-        } else if position == "Power Forward" {
-            
-        } else if position == "Small Forward" {
-            
-        } else if position == "Center" {
-            
+        } else if selectedPosition == "Shooting Guard" {
+            targetPlayer = randomShootingGuard
+        } else if selectedPosition == "Power Forward" {
+            targetPlayer = randomPowerForward
+        } else if selectedPosition == "Small Forward" {
+            targetPlayer = randomSmallForward
+        } else if selectedPosition == "Center" {
+            targetPlayer = randomCenter
         }
         updateViews()
     }
     
-//    func randomPlayerSelector() {
-//        guard let randomPointGuard = PlayerController.pointGuard.randomElement(),
-//              let randomShootingGuard = PlayerController.shootingGuard.randomElement(),
-//              let randomPowerForward = PlayerController.powerForward.randomElement(),
-//              let randomSmallForward = PlayerController.smallForward.randomElement(),
-//              let randomCenter = PlayerController.center.randomElement() else { return }
-//    }
-    
     func updateViews() {
-        guard let targetPlayer = targetPlayer else { return }
+        playersOnScreen.shuffle()
         self.title = "Who is a \(selectedPosition)?"
         collectionView.reloadData()
     }
     
     func presentAlert(player: Player) {
-        let success = player == targetPlayer
+        guard let targetPlayer = targetPlayer else { return }
+        let success = player.position == targetPlayer.position
         let alertController = UIAlertController(title: success ? "Wooo, you know your sh*t ;)" : "Watch more basketball ;(", message: nil, preferredStyle: .alert)
         let doneAction = UIAlertAction(title: "Done", style: .cancel)
-        let playAction = UIAlertAction(title: "Play Again", style: .default)
+        let playAction = UIAlertAction(title: "Play Again", style: .default) { (_) in
+            self.shufflePlayers(selectedPosition: self.selectedPosition)
+        }
         alertController.addAction(doneAction)
         if success {
             alertController.addAction(playAction)
@@ -106,7 +101,7 @@ extension PlayerListCollectionViewController: UICollectionViewDelegateFlowLayout
 extension PlayerListCollectionViewController: PlayerSelectionDelegate {
     func positionWasSelected(for position: String) {
         selectedPosition = position
-        shufflePlayers(position: position)
+        shufflePlayers(selectedPosition: position)
     }
 }//End of extension
 

@@ -101,7 +101,7 @@
                                         <rect key="frame" x="0.0" y="167" width="314" height="74"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="35"/>
-                                        <state key="normal" title="Power Forward">
+                                        <state key="normal" title="Small Forward">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>
@@ -112,7 +112,7 @@
                                         <rect key="frame" x="0.0" y="251" width="314" height="73.5"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="35"/>
-                                        <state key="normal" title="Small Forward">
+                                        <state key="normal" title="Power Forward">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>

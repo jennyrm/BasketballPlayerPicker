@@ -21,16 +21,16 @@ class PlayerController {
         Player(name: "Kobe Bryant", position: "Shooting Guard", photo: UIImage(named: "kobe"))
     ]
     
-    static let powerForward = [
-        Player(name: "Zion Williamson", position: "Power Forward", photo: UIImage(named: "zion")),
-        Player(name: "giannis antetokounmpo", position: "Power Forward", photo: UIImage(named: "greekfreak")),
-        Player(name: "Anthony Davis", position: "Power Forward", photo: UIImage(named: "thebrow"))
-    ]
-    
     static let smallForward = [
         Player(name: "Lebron James", position: "Small Forward", photo: UIImage(named: "lebron")),
         Player(name: "Kawhi Leonard", position: "Small Forward", photo: UIImage(named: "theklaw")),
         Player(name: "Kevin Durant", position: "Small Forward", photo: UIImage(named: "thesnake"))
+    ]
+    
+    static let powerForward = [
+        Player(name: "Zion Williamson", position: "Power Forward", photo: UIImage(named: "zion")),
+        Player(name: "giannis antetokounmpo", position: "Power Forward", photo: UIImage(named: "greekfreak")),
+        Player(name: "Anthony Davis", position: "Power Forward", photo: UIImage(named: "thebrow"))
     ]
     
     static let center = [
